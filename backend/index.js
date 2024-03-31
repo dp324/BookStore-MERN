@@ -17,7 +17,8 @@ app.use(
 )
 
 app.get('/', (req, res) => {
-    console.log("heh");
+    res.send("hello");
+    //console.log("heh");
 })
 
 app.use('/books', bookRoute);
