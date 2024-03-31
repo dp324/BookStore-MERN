@@ -8,14 +8,13 @@ import cors from "cors";
 const app = express();
 
 app.use(express.json());
-app.use(cors());
-// app.use(
-//     cors({
-//         origin : 'http://localhost:3000',
-//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//         allowedHeaders: ['content-type'],
-//     })
-// )
+app.use(
+    cors({
+        origin : 'http://book-store-mern-frontend-five.vercel.app',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['content-type'],
+    })
+)
 
 app.get('/', (req, res) => {
     console.log("heh");
