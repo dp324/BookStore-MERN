@@ -16,7 +16,7 @@ const CreateBooks = () => {
             publishYear,
         }
         axios
-            .post(`https://book-store-mern-api-phi.vercel.app/books`, data)
+            .post(`https://bookstore-mern-api1.onrender.com/books`, data)
             .then(() => {
                 navigate('/');
             })

@@ -13,7 +13,7 @@ const Home = () => {
     const [showType, setShowType] = useState('table');
     useEffect(() => {
         axios
-            .get('https://book-store-mern-api-phi.vercel.app/books')
+            .get('https://bookstore-mern-api1.onrender.com/books')
             .then((res) => {
                 setBooks(res.data.data);
             })

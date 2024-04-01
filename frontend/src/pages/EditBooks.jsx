@@ -11,7 +11,7 @@ const EditBooks = () => {
     const navigate = useNavigate(); 
     const {id} = useParams();
     useEffect(() => {
-      axios.get(`https://book-store-mern-api-phi.vercel.app/books/${id}`)
+      axios.get(`https://bookstore-mern-api1.onrender.com/books/${id}`)
       .then((res) => {
         setTitle(res.data.title)
         setAuthor(res.data.author)
@@ -29,7 +29,7 @@ const EditBooks = () => {
             publishYear,
         }
         axios
-            .put(`https://book-store-mern-api-phi.vercel.app/${id}`, data)
+            .put(`https://bookstore-mern-api1.onrender.com/${id}`, data)
             .then(() => {
                 navigate('/');
             })
