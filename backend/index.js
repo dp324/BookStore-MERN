@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(
     cors({
-        origin : ['https://book-store-mern-frontend-five.vercel.app'],
+        origin : ['https://book-store-mern-frontend-five.vercel.app/'],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: ['content-type'],
     })

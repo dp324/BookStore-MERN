@@ -9,7 +9,7 @@ const DeleteBooks = () => {
   const {id} = useParams();
   const handleDeleteBook = () => {
     axios
-      .delete(`https://book-store-mern-api-phi.vercel.app/books/${id}`)
+      .delete(`http://localhost:5555/books/${id}`)
       .then(()=>{
         navigate('/')
       })
