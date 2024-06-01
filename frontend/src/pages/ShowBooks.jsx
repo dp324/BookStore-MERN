@@ -1,13 +1,12 @@
-import React from 'react'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const ShowBooks = () => {
     const [book, setBook] = useState({});
-    const {id} = useParams();
+    const { id } = useParams();
 
-    useEffect(()=>{
+    useEffect(() => {
         axios
             .get(`https://bookstore-mern-api1.onrender.com/books/${id}`)
             .then((res) => {
@@ -15,40 +14,40 @@ const ShowBooks = () => {
             })
             .catch((err) => {
                 console.log(err);
-            })
-    })
-  return (
-    <div className='p-4'>
-        <h1 className='text-3xl my-4'>Show Book</h1>
-        <div className='flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4'>
-            <div className='my-4'>
-                <span className='text-xl mr-4 text-gray-500'>ID</span>
-                <span>{book._id}</span>
-            </div>
-            <div className='my-4'>
-                <span className='text-xl mr-4 text-gray-500'>Title</span>
-                <span>{book.title}</span>
-            </div>
-            <div className='my-4'>
-                <span className='text-xl mr-4 text-gray-500'>Author</span>
-                <span>{book.author}</span>
-            </div>
-            <div className='my-4'>
-                <span className='text-xl mr-4 text-gray-500'>Publish-Year</span>
-                <span>{book.publishYear}</span>
-            </div>
-            <div className='my-4'>
-                <span className='text-xl mr-4 text-gray-500'>Create Time</span>
-                <span>{new Date(book.createdAt).toString()}</span>
-            </div>
-            <div className='my-4'>
-                <span className='text-xl mr-4 text-gray-500'>Last Update Time</span>
-                <span>{new Date(book.updatedAt).toString()}</span>
+            });
+    }, [id]);
+
+    return (
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+            <div className="w-full max-w-lg bg-white rounded-lg shadow-lg p-6 border border-gray-300">
+                <h1 className="text-3xl mb-6 text-center text-gray-800 font-bold">Show Book</h1>
+                <div className="mb-4 p-4 border border-gray-300 rounded-lg">
+                    <span className="block text-gray-700 text-sm font-bold mb-2">ID</span>
+                    <span className="block text-gray-600">{book._id}</span>
+                </div>
+                <div className="mb-4 p-4 border border-gray-300 rounded-lg">
+                    <span className="block text-gray-700 text-sm font-bold mb-2">Title</span>
+                    <span className="block text-gray-600">{book.title}</span>
+                </div>
+                <div className="mb-4 p-4 border border-gray-300 rounded-lg">
+                    <span className="block text-gray-700 text-sm font-bold mb-2">Author</span>
+                    <span className="block text-gray-600">{book.author}</span>
+                </div>
+                <div className="mb-4 p-4 border border-gray-300 rounded-lg">
+                    <span className="block text-gray-700 text-sm font-bold mb-2">Publish Year</span>
+                    <span className="block text-gray-600">{book.publishYear}</span>
+                </div>
+                <div className="mb-4 p-4 border border-gray-300 rounded-lg">
+                    <span className="block text-gray-700 text-sm font-bold mb-2">Create Time</span>
+                    <span className="block text-gray-600">{new Date(book.createdAt).toLocaleString()}</span>
+                </div>
+                <div className="mb-4 p-4 border border-gray-300 rounded-lg">
+                    <span className="block text-gray-700 text-sm font-bold mb-2">Last Update Time</span>
+                    <span className="block text-gray-600">{new Date(book.updatedAt).toLocaleString()}</span>
+                </div>
             </div>
         </div>
-       
-    </div>
-  )
-}
+    );
+};
 
-export default ShowBooks
+export default ShowBooks;
