@@ -8,23 +8,15 @@ import cors from "cors";
 const app = express();
 
 app.use(express.json());
-app.use(cors())
-app.use(
-    cors({
-        origin : ['https://book-store-mern-frontend-five.vercel.app/'],
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        allowedHeaders: ['content-type'],
-    })
-)
+app.use(cors({
+    origin: 'https://book-store-mern-frontend-five.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
+    credentials: true
+}))
 
 app.get('/', (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
-    res.send("hello");
-    //console.log("heh");
+    res.send('Hi There!');
 })
 
 app.use('/books', bookRoute);
