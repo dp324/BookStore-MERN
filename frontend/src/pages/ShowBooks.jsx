@@ -8,7 +8,7 @@ const ShowBooks = () => {
 
     useEffect(() => {
         axios
-            .get(`https://bookstore-mern-api1.onrender.com/books/${id}`)
+            .get(`https://book-store-mern-api-phi.vercel.app/books/${id}`)
             .then((res) => {
                 setBook(res.data);
             })

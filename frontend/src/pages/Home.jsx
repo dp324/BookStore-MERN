@@ -20,7 +20,7 @@ const Home = () => {
 
     useEffect(() => {
         axios
-            .get(`https://bookstore-mern-api1.onrender.com/books`)
+            .get(`https://book-store-mern-api-phi.vercel.app/books`)
             .then((res) => {
                 setBooks(res.data.data);
                 setBookAfterQuery(res.data.data);
