@@ -5,20 +5,13 @@ import { Link } from "react-router-dom";
 import { MdOutlineAddBox } from 'react-icons/md';
 import BooksCard from "../components/home/BooksCard.jsx";
 import BooksTable from "../components/home/BooksTable.jsx";
-import { useInView } from 'react-intersection-observer';
 import SkeletonLoader from "../components/SkeletonLoader.jsx";
 
 const Home = () => {
     const [books, setBooks] = useState([]);
     const [showType, setShowType] = useState('card');
     const [bookAfterQuery, setBookAfterQuery] = useState([]);
-    const [page, setPage] = useState(1);
-    const [hasMore, setHasMore] = useState(true);
     const [loading, setLoading] = useState(false);
-
-    const { ref, inView } = useInView({
-        threshold: 0.1,
-    });
 
     function filterFunction(e) {
         const filteredBooks = books.filter(book => book.author.toLowerCase().includes(e.target.value)).map(book => ({ "title": book.title, "author": book.author, "publishYear": book.publishYear }));
@@ -26,33 +19,19 @@ const Home = () => {
     }
 
     useEffect(() => {
-        fetchBooks();
-    }, [page]);
-
-    useEffect(() => {
-        if (inView && hasMore) {
-            setPage(prevPage => prevPage + 1);
-        }
-    }, [inView, hasMore]);
-
-    const fetchBooks = () => {
         setLoading(true);
         axios
-            .get(`https://book-store-mern-api-phi.vercel.app/books?page=${page}`)
+            .get(`https://book-store-mern-api-phi.vercel.app/books`)
             .then((res) => {
-                if (res.data.data.length === 0) {
-                    setHasMore(false);
-                } else {
-                    setBooks(prevBooks => [...prevBooks, ...res.data.data]);
-                    setBookAfterQuery(prevBooks => [...prevBooks, ...res.data.data]);
-                }
+                setBooks(res.data.data);
+                setBookAfterQuery(res.data.data);
                 setLoading(false);
             })
             .catch((err) => {
                 console.log(err);
                 setLoading(false);
             });
-    };
+    }, []);
 
     return (
         <div className="min-h-screen bg-gray-100 p-8">
@@ -85,7 +64,6 @@ const Home = () => {
                         )
                     )
                 }
-                {hasMore && !loading && <div ref={ref} className="loading"></div>}
             </div>
         </div>
     );
