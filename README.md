@@ -15,7 +15,7 @@ This is a bookstore web application where users can perform CRUD (Create, Read, 
 
 
 ## Screenshots
-<img src="./frontend/imges Github/Home.png" alt="Screenshot 1" width="400" height="300">
+<img src="./frontend/imges Github/Home.png" alt="Screenshot 1" width="800" height="300">
 <div style="display: flex;">
     <img src="./frontend/imges Github/CardView.png" alt="Screenshot 2" width="400" height="300">
     <img src="./frontend/imges Github/TableView.png" alt="Screenshot 3" width="400" height="300">
